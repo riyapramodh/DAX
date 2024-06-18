@@ -1,0 +1,21 @@
+Data Analysis Expression
+  collection of fucntion and can use formulaes and expressions
+  known as a functional language cux we use a lot of pre written function by Microsoft
+  used in Power BI, Power Pivot(Excel)
+by using DAX we ca add thhree types of calculations:
+1. calculated columns -- > aditional columns that combines column etc
+  has less analytical capability (performd for basic operations - sum, diff) and occupies extra memory
+  cuz it is added to the table and stored with it
+  DOES NOT RETURN JUST ONE VALUE
+2. measures --> sum of sales, averga eof proce , etc
+  summarises data to a singe numerical value (sales amount, price, discount)
+  has high analytical capabilities and less memory is occupied
+  cuz it is not stored with the table only the logic needs to be stored
+  GIVES. RETURNS JUST ONE VALUE
+3. calculated tables --> combine tables from one or two tables to solve buisness problems
+4. RLS
+
+
+
+
+  
