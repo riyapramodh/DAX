@@ -1,0 +1,16 @@
+CALCULATED COLUMN = it is static
+- we calculate the 5 percent share of a revenue
+- it calculates this share in revenue for each row (for each date. year, product)
+- when put into a card it shows an aggregation 
+- when put into a table with date/product as another parametre it shows the actual calucalted column data
+- it does not change when the user interacts with the report or visual
+- it is stored in memory
+- it belongs to a table
+
+MEASURE = it is dynamic
+- we calculate the 5 percent share of a revenue
+- it calculates the total share of revenue and ot indivisualy for each row (for each date. year, product)
+- when put into a card it shows the actual calculted measure value- but when put into a table with date/product as another paraemtre it will be able to split from this value to give the info particulary for each row
+- so it changes when user interacts with the visual or report
+- it is not stored in memory
+- it does not belong to a table in specific, can be used by all tables
