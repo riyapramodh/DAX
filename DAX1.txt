@@ -1,0 +1,49 @@
+so we have defaul functions that will help us with the objective
+example
+SAMEPERIODLASTYEAR('SALE'[date]) --> here the function has been used and the paraemtre is the data column of the SALE table
+we go for CALCULATED TABLES when --> date tables, role playing dimensions, what-if analysis
+in excel u can reference the indiviudual cells or arrays but in DAX  we can omly reference the tables or columns
+not all data types supported by excel will be supported by DAX
+
+
+syntax :
+MEASURE = FUNCTION('TABLE'[COLUMN])
+Total sale = Sum('SALES'[revenue])
+
+to make a new colunmn using DAX but it needs to be made combining two pre existing columns then we may use as (with a hyphen between the two values) :
+New product name = productHeirarchy[prod_id] & "-"& productHeirarchy[product_name]
+
+only those with measures (sigmoid/sogma sign)
+the code that we write to calculate like Total sales etc can be seen when we drag and drop , so itll only be visble in the table in the visualisation page
+but if we go to the table view it wouldnt be visble in the table column 
+cuz the code or its result is not stored in definite memory , just can be seen and used ONLY FOR CREATING VISUALISATIONS
+
+also if we have say used Total sales in 100 visuals m instead of changing in all the 100 places from total sales to trotal profit , we can just alter it in the dax code adn it gets changed automatically
+-----the main reason for using DAX coding
+
+
+for writting aggregation/summation/etc we go for MEASURE
+for concatention/column derivation/etc we go for CALCULATED COLUMNS
+
+the MEASURE is visble only when we use it in a visual ; else it isnt stored any where else
+also when we click on columsn with SUMMATION symbol go to the Column Tools and from Summarisation (it ll be given as SUM by default) change it to -->DONT SUMMARISE
+
+
+CALCULATED TABLE
+we can create a tbale with just the values we need --> basically like filtering a pre existing table and storing the filtered values onto a new table
+
+new table = DateTable //repeats the same table -- has all dates info such as due date, sale date , etc 
+//our goal is to create a new table that just relates and filters the due date alone --> due date dimension table to link with the feild table
+new table = CALENDER(DATE(2020,1,1),DATE(2021,12,31))  ----> c
+CALENDER function ---> takes start date and end date
+DATE function within that ---> takes date as year month date
+so here it is a function within a function to create a single column in anew table
+
+now to get the year aloen from this column of the table and add to a new column :
+Datetable = CALENDER(DATE(2020,1,1),DATE(2021,12,31))
+Year = YEAR(DateTable[DATE])
+--> Here "Year" is the column name we give and "YEAR" is the function used to obtain just the years from the "DATE" column of the "Datetable"
+--> when we dont use measure we DONT have to wrap the tablename around single qoutes('')
+
+
+
