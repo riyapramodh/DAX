@@ -1,0 +1,30 @@
+Calculations done within rows --> row context
+Profit = Sumx(Sales, [sales] - [price])   ---> from sales table we are finding the "sales - price" value for each row and saving that in "profit"
+
+Filter Context --> filters that are applied before the table arrives
+that is before the values are calculated if no filter is applied we may have 1000 rows but after applying filter
+through the filter pane, visual(clicking and selecting a part), slicer only those rows will be shown and acc the numbber of rows will also get lesser.
+
+
+say we have a total sales of 28M 
+FILTER 1 - once we add this to a table and add the states as well we see the split up for each state --- this is a filter that helps us to filter out based on the states
+FILTER 2 - next we can add a filter by using a slicer that helps us to filter based on a product --> so now it filters sale for each state and based on product and hn=ence out total sales value may als vary now
+this is FILTER CONTEXT
+it is just a set of filters that have been applie to derive to the resukt
+FILTER CONTEXT is the combintion of filters from all tables / filter tables
+
+
+we need to use row context in cases such as -
+say we want to find the profit by subtracting price from sales
+if we subtract [total of price] from [total of sales] like how we do ususal calculations, the value here wont be accurate
+its because price and sales for each product will vary and hence we must find the ndividual calculation for each row and then sum them up to gthere
+so instead of -------------------> [total sales]-[total price]
+we do -------------->  sumx([sales]-[ price])
+
+SUMX ----> is an iterator that iterates through each row in the table
+and these are measures
+once we apply filter the calculation will be redone internally using the dax command we wrote and we will get a new value
+and that is why a MEASURE is said to be dynamic
+
+
+
