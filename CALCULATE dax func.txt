@@ -1,0 +1,37 @@
+CALCULATE DAX FUNCTION ---->
+evaluates  an expression in a context modifed by filters
+basically we can evaluate a value but als use inuilt columns
+also if filter sare applied in thsi command then the pre applied filters will be ignored and only these filters will be effective
+
+
+total healthcare sales = CALCULATE(
+                        SUM('sales'[price]),                                    -----------> the expression to evaluate
+                        'productHeirarchy'[caetgory] = "Hygeine"                -----------> the filter that will be applied (all other pre applied filters will be neglected)
+                        )
+
+                                            ELSE ALSO WRITTEN AS 
+total product sales = CALCULATE(
+                        SUM('sales'[price]),                                    
+                        All('productHeirarchy'[caetgory])               
+                        )
+this can be done to compre between values of sales of different categories
+so here we may say that if in a table we add both healthcare and total sales, then in this manner for each of the total sales fro every category we can compare with tthat of the healthcare category
+it may also have many other uses
+
+
+now to find difference in sales bewtwwen two categories -----?
+
+DIFF_SALES = [total healthcare sales] - 'sales'[total sales] 
+---> here we dont mention the table name for "total healthcare sales" cuz this is a measure and it is not any column that belongs to a table
+so this if we add as a column it gives the diff in sales of each category compared with the healthcare sales for each row entry
+
+
+
+-to find th epercentage contribution of each country to the tital sales
+all_country_sales = CALCULATE(SUM('sales'[total_sales]), All('sales_city'[state])) ----------------------> gives us that total sales of each state with the final amount
+share_Contributoin = 'sales'[total_sales]/'measures_table'[all_country_sales] ---------------------------> then click on the % symbol to get in that format
+now you may add this to the table and we may see alongside each othe country rows the contribution it has mad ein terms of percentage to the total sales
+
+
+we use [only need to use this] CALCULATE when we need to do some calculation that require to override the filter context , so even if some filters are present for the usage of the measur ethey would be neglected
+
