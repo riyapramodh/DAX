@@ -1,0 +1,43 @@
+-----------------------
+types of DAX functions
+-----------------------
+aggergation functioN - SUM, MIN, MAX, AVG
+date and time  - 
+time intelligence - YTD, MTD, total YTD
+filter -
+financial -  
+informations - 
+logical function -
+
+
+math and trig 
+other func 
+parent and child func 
+relationship func - 
+statistical 
+table manipulation
+text function - used when the data has more of the textual data consisting 
+/...+250 DAX functions ----------------------------------->visit
+
+https://docs.microsoft.com/en-us/dax/dax-function-reference
+
+---------------------------------------
+most used DAX functions
+---------------------------------------
+SUM/SUMX, AVERAGE/AVERAGX, ....etc
+COUNT/DSTINCTCOUNT
+CALCULATE
+FILTER
+ALL/ALLEXCEPT
+KEEPFILTERS/REMOVEFILTERS
+LOOKUPVALUE
+
+
+TOTALYTD/TOTALQTD/TOTALMTD
+DATEADD/DATESBETWEEN/DATESINPERIOD
+FIRSTDATE/LASTDATE
+YEAR/MONTH/DAY
+TODAY/EOMONTH
+RELATED/RELATEDTABLE/USERELATIONSHIP
+ISBLANK/HASONEVALUE/USERNAME
+SUMMARIZE/GROUPBY
