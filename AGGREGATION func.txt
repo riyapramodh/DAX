@@ -1,0 +1,41 @@
+--SUM - SUM/SUMX
+by default a measure is attached to an aggregation
+we use SUM when we just have to find the sum of sales, saum or profit etc for a year/country/total/etc..
+we use SUMX when we want to find the sum of something but implicitly for a row 
+so say profit --> this can be found not by calculation the diff of total sales - total stock  but instead we must row wise, iteratvely calcultae the profit for each column and then 
+add these values to gthe the total profit 
+so we can say that the SUMX operator is like an iterator that iteratoes through each and every row in situations where we need to calculta esomething in that manner
+
+
+for example
+profti = SUMX('tablename, 'tablename'[column] - 'tablename'[column])\
+profit = SUMX(sales_table, 'sales_table'[sales] - 'sales_table'[product_cost])
+
+--MAX, MAXA, MAXX
+MAX - gives the maximum value of the column/ calculation that we pefrom. excludes LOGICAL VALUES (BOOLEAN/etc..) AND TEXT
+MAXA -  includes LOGICAL VALUES(BOOLEAN/etc..) AND TEXT
+MAXX - same like SUMX it is an iterator that iterates through each row and returns a largest numeric value or largest string obtained by evaluation through each row of a table
+
+TO NOTE- when we use iterator functions such as MXX and SUMX we need to not just start by mentioning the table with columns and the oeperation
+we need to first mention the table name seperately then a ',' and the mention as in the usual format ;i.e the table name with the column name followed by the operatore and the next expression
+
+ex - MAXX('sales_table', 'sales_table'[total_sales_amount]) --> gives the maximum value
+but because of the filter context that has been applied we may get that the values obtained upon calculation using MAX and MAXX will be same 
+
+
+also when we use MAXX we can try to filter content as such:
+
+MAX_SALES_FOR_ABOVE_1000 = MAXX(FILTER('sales_table', 'sales_table'[total_sales_amount] >1000), 'sales_table'[total_sales_amount])
+
+now what is done here?
+here we first use the maxx operator so that we can iteratively get resukts so we can filter out acc, but when we use MAX it just give one value and we cant use filter to iteratively filter out
+now here we us ethe filter to filter out those rows in the table that have sales > 1000
+and the we are supp t return the max sales value fro those rows whose maximum sales will be greater than 100
+SO THE SALES NEED TO BE 1000 AND FROM THOSE ROWS WE FIND THE MAX SALES OUT OF THOSE ROWS
+this can be done only if we iteratively go through different rows thats why we should use MAXX instead of MAX 
+1.) to itertie through each row
+2.) filter each and every row based on if the sales is > 1000
+3.) then for those rows/ out of those rows whose sales are >1000, find the max sales
+
+hence only possible with an iterator function like MAXX 
+though under normal situations and with use of filter content MAX and MAXX my give the same results
